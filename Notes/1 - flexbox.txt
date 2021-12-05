@@ -1,0 +1,9 @@
+# PARENT STYLES:
+flexDirection - flexbox direction
+justifyContent - horizontal spacing or alignment
+alignItems - vertical alignment
+
+# CHILD STYLE:
+flex - the width of the child
+  - flex is divided by the number of its siblings
+  - setting 1 to each sibling will divide the parents height evenly

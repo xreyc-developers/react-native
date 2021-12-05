@@ -1,0 +1,40 @@
+## PLATFORM API
+- you can adjust the layout dependent on the platform you are running on
+
+import { Platform } from 'react-native';
+Platform.OS // ios, android, windows, macos, web
+Platform.Version
+Platform.isPad
+Platform.isTV
+Platform.isTVOS
+
+
+## PLATFORM SELECT
+import { Platform } from 'react-native';
+
+const App = () => {
+  return (
+    <View style={
+      ...styles.header,
+      ...Platform.select({
+        ios: styles.headerOS,
+        android: styles.headerAndroid
+      })
+    }></View>
+  )
+}
+
+## PLATFORM VERSION CAN BE ALSO USED TO CHANGE THE LOGIC DEPENDENT ON THE SUPPORTED PLATFORM
+import { TouchableNativeFeedback, TouchableOpacity, Platform } from 'react-native';
+
+const App = () => {
+  const button = TouchableOpacity;
+  if(Platform.OS === 'android' && Platform.Version >= 21) {
+    button = TouchableNativeFeedback;
+  }
+}
+
+## YOU CAN ALSO CREATE MULTIPLE FILES FOR DIFFERENT PLATFORMS
+## RECOMMENDED NAMING CONVENTIONS:
+home.android.js
+home.ios.js

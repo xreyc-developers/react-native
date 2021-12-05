@@ -1,0 +1,28 @@
+## ScrollView
+  - make a certain list scrollable if the list exceeded the height or width of the device
+  - use scroll view for small list only
+
+import { ScrollView } from 'react-native';
+
+<ScrollView>
+  {courseGoals.map(goal => {
+    return (
+      <View key={goal} style={styles.listItem}>
+        <Text>{goal}</Text>
+      </View>
+    )
+  })}
+</ScrollView>
+
+## FlatList
+import { FlatList } from 'react-native';
+const currentGoals = [{ id: Math.random().toString(), value: enteredGoal }];
+<FlatList
+  keyExtractor={(item, index) => item.id}
+  data={courseGoals}
+  renderItem={itemData => (
+    <View style={styles.listItem}>
+      <Text>{itemData.item.value}</Text>
+    </View>
+  )}
+/>

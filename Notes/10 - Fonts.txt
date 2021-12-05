@@ -1,0 +1,30 @@
+## ADDING FONTS
+
+## IF FONT IS NOT AVAILABLE
+expo install expo-font
+or
+npm install expo-font --save
+
+## APPLICATION
+@ assets/fonts copy and paste the .ttf file
+@ App.js
+
+import * as Font from 'expo-font';
+// PROLONGS THE SCREEN UNTIL THE APP STARTS UNTIL THE FONT IS LOADED
+import { AppLoading } from 'expo';
+import { useState } from 'react';
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'open-sans': require('./assets/font/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/font/OpenSans-Bold.ttf')
+  });
+}
+
+const App = () => {
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  if(!fontLoaded) {
+    return <AppLoading startAsync={fetchFonts} onFinish={() => { setFontLoaded(true) }} />
+  }
+}

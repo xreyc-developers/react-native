@@ -1,0 +1,10 @@
+## KEYBOARD AVOIDING VIEW
+import { KeyboardAvoidingView } from 'react-native';
+
+<KeyboardAvoidingView behavior='position' keyboardVerticalOffset={30}>
+</KeyboardAvoidingView>
+
+# BEHAVIORS
+- position (BEST ON IOS)
+- height
+- padding (BEST ON ANDROID)

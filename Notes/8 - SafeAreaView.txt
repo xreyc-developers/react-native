@@ -1,0 +1,14 @@
+## SAFE AREA VIEW
+- sometimes notch of the device overlaps the screen
+- it fits the app on the screen of the device with respect to the phone notch
+- it automatically add padding with respect to the notch of the phone
+- make sure that it is on the top-most area of the code which is the App.js
+
+import { SaveAreaView } from 'react-native';
+
+const App = () => {
+  return (
+    <SaveAreaView>
+    </SaveAreaView>
+  )
+}

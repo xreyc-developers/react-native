@@ -1,0 +1,25 @@
+## MODELS AND DATA
+
+# CREATE FOLDER NAMED MODELS
+@ models/category.js
+class Category {
+  constructor(id, title, color) {
+    this.id = id;
+    this.title = title;
+    this.color = color;
+  }
+}
+
+export default Category;
+
+# CREATE FOLDER DATA
+@ data/dummy_data.js
+import Category from './models/category';
+
+export const CATEGORY = [
+  new Category('d1', 'Hello 1', '#333'),
+  new Category('d2', 'Hello 2', '#343'),
+  new Category('d3', 'Hello 3', '#323'),
+  new Category('d4', 'Hello 4', '#353'),
+  new Category('d5', 'Hello 5', '#323'),
+]

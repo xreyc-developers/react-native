@@ -1,0 +1,89 @@
+## STACKNAVIGATION
+- it only create a stack of navigation
+- it is a stack navigator for different screen
+- screens are stack not re-rendered every navigation
+- it only returns a container of navigation
+- it automatically adds a navigation section on top of the app, also with
+respect on the notch of the device
+- it automatically pass a special props to all component used
+
+## APPLICATION
+## CREATE FOLDER
+- navigation
+
+## CREATE NAVIGATION FILE
+- MealsNavigation.js
+
+## STACK NAVIGATION (V3)
+--------------------------------------------------------------------------------
+import { createStackNavigator, createAppContainer } from 'react-navigation'; or
+import { createStackNavigator, createAppContainer } from 'react-navigation-stack';
+
+// IMPORT SCREENS
+import HomePage from './screens/Homepage';
+import AboutPage from './screens/Aboutpage';
+import BlogPage from './screens/Blogpage';
+
+const MealsNavigator = createStackNavigator({
+  Home: HomePage,
+  About: AboutPage,
+  Contact: {
+    screen: BlogPage
+  }
+})
+
+export default createAppContainer(MealsNavigator);
+--------------------------------------------------------------------------------
+@ App.js
+import MealsNavigator from './navigation/MealsNavigation';
+
+const App = () => {
+  return <MealsNavigator />;
+}
+--------------------------------------------------------------------------------
+@HomePage.js
+const HomePage = (props) => {
+  return (
+    <Button title="Go To About" onPress={() => { props.navigation.navigate({
+      routeName: 'Home'
+    }) }}>
+  )
+}
+--------------------------------------------------------------------------------
+## HOW TO NAVIGATE
+# 1 (CANNOT NAVIGATE TO SCREEN MULTIPLE TIMES)
+props.navigation.navigate({ routeName: 'Home' });
+or
+props.navigation.navigate('Home');
+
+# 2 (CAN NAVIGATE TO SCREEN MULTIPLE TIMES - WITH RECORDED HISTORY)
+- use if the content changes but the navigation identifier is still the same
+props.navigation.push('Home');
+
+# 3 (NAVIGATE BACK TO PREVIOUS SCREEN)
+props.navigation.goBack(); // GO BACK TO PREVIOUS
+props.navigation.pop(); // POPS THE TOPMOST SCREEN (available only on stack
+navigation)
+
+# 4 (GO BACK TO THE ROOT/HOME SCREEN)
+props.navigation.popToTop();
+
+# 5 (NAVIGATE WITHOUT ADDING TO THE STACK)
+- for example you want to go to an specific page but don't want to add the
+current on the stack
+- there will be no back button
+- good for login screen
+props.navigation.replace('Home');
+--------------------------------------------------------------------------------
+## NAVIGATION WITH PARAMETERS
+## SET NAVIGATION PARAMETERS
+props.navigation.navigate({
+  routeName: 'HomeScreen',
+  params: {
+    categoryId: itemData.id
+  }
+});
+
+## GET NAVIGATION PARAMETERS
+props.navigation.getParams('categoryId');
+--------------------------------------------------------------------------------

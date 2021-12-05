@@ -1,0 +1,11 @@
+# GET DIMENSION
+- use dimension to get device size.
+- use dimension to adapt to different type of device.
+
+import { Dimension } from 'react-native';
+import { StyleSheet } frpm 'react-native';
+
+Dimensions.get('window').fontScale
+Dimensions.get('window').scale
+Dimensions.get('window').height // HEIGHT OF THE DEVICE
+Dimensions.get('window').width // WIDTH OF THE DEVICE

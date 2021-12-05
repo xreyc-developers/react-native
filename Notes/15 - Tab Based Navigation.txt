@@ -1,0 +1,45 @@
+## TAB BASED NAVIGATION
+
+--------------------------------------------------------------------------------
+## APLICATION
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import FavoriteScreen from './screens/FavoritesScreen';
+
+const MealsNavigator = createStackNavigator({...});
+
+const MealsFavTabNavigator = createBottomTabNavigator({
+  Meals: MealsNavigator,
+  Favorites: FavoriteScreen
+});
+
+// THE MEALS NAVIGATOR ARE NOW NESTED TO THE TAB NAVIGATOR (COMBINED)
+// IF WE ARE ON THE MEALS, BOTH TAB AND HEADER SHOW UP
+// IF WE ARE ON THE FAVORITES WE CAN ONLY SEE THE BOTTOM NAVIGATION
+export default createAppContainer(MealsFavTabNavigator);
+--------------------------------------------------------------------------------
+## WITH DEFAULT DESIGN
+
+const MealsFavTabNavigator = createBottomTabNavigator({
+  Meals: {
+    screen: MealsNavigator,
+    tabBarLabel: 'Meals',
+    navigationOptions: {
+      tabBaricon: {
+        return <Ionicons name="ios-restaurant" size={25} color="#909" />
+      }
+    }
+  },
+  Favorites: {
+    screen: FavoriteScreen,
+    tabBarLabel: 'Favorites',
+    navigationOptions: {
+      tabBaricon: {
+        return <Ionicons name="ios-restaurant" size={25} color="#909" />
+      }
+    }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: '#444'
+  }
+});

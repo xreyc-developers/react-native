@@ -1,0 +1,35 @@
+## ORIENTATION
+# ORIENTATION ADAPTATION
+@ App.json
+{ "orientation": "default" } // BOTH PORTRAIT AND LANDSCAPE
+{ "orientation": "portrait" }
+{ "orientation": "landscape" }
+
+
+## LISTEN TO ORIENTATION CHANGES
+- orientation may need another dimension calculations after rotating your device
+- all styles are lock on load of the application
+- we need to recalculate the orientation changes
+
+import { useState, useEffect } from 'react';
+import { Dimensions } from 'react-native';
+
+const App = () => {
+  // WE CAN USE THIS STATE FOR CREATING LOGIC
+  const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width / 4);
+
+  // THIS METHOD CAN ALSO BE USED ON ALL LAYOUT CHANGES
+  // THIS ENABLE US TO DETECT THE ORIENTATION
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get('window').width / 4);
+    }
+
+    Dimensions.addEventListener('change', updateLayout);
+
+    return () => {
+      Dimensions.removeEventListeners('change', updateLayout)
+    };
+  })
+
+}

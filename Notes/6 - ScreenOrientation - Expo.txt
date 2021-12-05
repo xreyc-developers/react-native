@@ -1,0 +1,22 @@
+## EXPO SCREEN ORIENTATION
+- after setting the orientation on the App.json, you can still set it on run time
+- you can get the type of orientation
+- it is better than using Dimension since dimension gets only data from the current size of the screen.
+- works only on expo
+- if not installed/not working
+expo install expo-screen-orientation
+import * as ScreenOrientation from 'expo-screen-orientation';
+
+## USAGE ON EXPO
+import { ScreenOrientation } from 'expo';
+
+const App = () => {
+  // LOCKING THE SCREEN
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+
+  // GET THE CURRENT ORIENTATION
+  ScreenOrientation.getOrientationAsync()
+
+  // SET LISTENER
+  ScreenOrientation.AddOrientationChangeListener()
+}

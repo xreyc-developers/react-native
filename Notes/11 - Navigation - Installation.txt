@@ -1,0 +1,24 @@
+## REACT NAVIGATION
+
+##### INSTALL PACKAGE #####
+npm install --save react-navigation
+
+## EXPO DEPENDENCIES
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+## BARE REACT NATIVE DEPENDENCIES
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+## INSTALL STACKNAVIGATOR
+- screens are managed on a stack, the current screen on the top-most stack
+- screen below the top-most wont be seen
+npm install --save react-navigation-stack
+import { createStackNavigator } from 'react-navigation-stack';
+
+## INSTALL DRAWERNAVIGATOR
+npm install --save react-navigation-drawer
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
+## INSTALL TABSNAVIGATOR
+npm install --save react-navigation-tabs
+import { createBottomTabNavigator } from 'react-navigation-tabs';

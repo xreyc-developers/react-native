@@ -1,0 +1,135 @@
+## HEADER TITLE
+- header title inherited from react navigator
+- every screen that receives the props
+- check the documentation for more details (v4)
+
+--------------------------------------------------------------------------------
+# SET HEADER STYLE PER SCREEN
+
+const HomeScreen = () => {
+  return <View></View>
+}
+
+HomeScreen.navigationOptions = {
+  headerTitle: 'Meal Categories',
+  headerStyle: {
+    backgroudColor: '#809'
+  },
+  headerTintColor: 'white'
+}
+
+export default HomeScreen;
+--------------------------------------------------------------------------------
+## MAKE THE NAVIGATION UNIFORM
+- place all the code on one place
+
+@ MealsNavigator.js
+const MealsNavigator = createStackNavigator({
+  Home: {
+    screen: HomePage,
+    navigationOptions: {
+      headerTitle: 'Home',
+      headerStyle: {
+        backgroudColor: Platform.OS === 'android' ? Color.primaryColor : Color.secondaryColor
+      },
+      headerColor: Platform.OS === 'android' ? Color.primaryColor : 'white'
+    }
+  },
+  About: {
+    screen: AboutPage,
+    navigationOptions: {
+      headerTitle: 'About',
+      headerStyle: {
+        backgroudColor: Platform.OS === 'android' ? Color.primaryColor : Color.secondaryColor
+      },
+      headerColor: Platform.OS === 'android' ? Color.primaryColor : 'white'
+    }
+  },
+  Contact: {
+    screen: BlogPage,
+    navigationOptions: {
+      headerTitle: 'Blogs',
+      headerStyle: {
+        backgroudColor: Platform.OS === 'android' ? Color.primaryColor : Color.secondaryColor
+      },
+      headerColor: Platform.OS === 'android' ? Color.primaryColor : 'white'
+    }
+  }
+})
+--------------------------------------------------------------------------------
+## SET DEFAULT DESIGN
+- set the reusable codes on defaultNavigationOptions
+
+@ MealsNavigator.js
+const MealsNavigator = createStackNavigator({
+  Home: {
+    screen: HomePage,
+    navigationOptions: {
+      headerTitle: 'Home'
+    }
+  },
+  About: {
+    screen: AboutPage,
+    navigationOptions: {
+      headerTitle: 'About'
+    }
+  },
+  Contact: {
+    screen: BlogPage,
+    navigationOptions: {
+      headerTitle: 'Blogs'
+    }
+  }
+}, {
+  initialRouteName: 'Home', // SETUP THE INITIAL SCREEN
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroudColor: Platform.OS === 'android' ? Color.primaryColor : Color.secondaryColor
+    },
+      headerColor: Platform.OS === 'android' ? Color.primaryColor : 'white'
+    }
+})
+--------------------------------------------------------------------------------
+## FOR MORE OPTIMIZED NAVIGATION
+- this will optimize the screen navigation, developer by IOS and Android
+npm install --save react-native-screens
+
+@ App.js
+import { useScreens } from 'react-native-screens';
+
+useScreens();
+
+const App = () => {}
+--------------------------------------------------------------------------------
+## BUTTONS ON HEADER
+## INSTALLATION
+npm install --save react-navigation-header-buttons
+npm install --save @expo/vector-icons
+
+## APPLICATION
+import { HeaderButton } from 'react-navigation-header-buttons';
+import { Ionicons } from '@expo/vector-icons';
+
+const CustomHeaderButton = props => {
+  return <HeaderButton {...props} IconComponent={Ionicons} iconSize={23} color="#333" />
+}
+
+export default CustomHeaderButton;
+--------------------------------------------------------------------------------
+@ HomeScreen.js
+HomeScreen.navigationOptions = {
+  headerTitle: 'Meal Categories',
+  headerStyle: {
+    backgroudColor: '#809'
+  },
+  headerTintColor: 'white',
+  headerRight: {
+    <HeaderButtons HeaderBottonComponent={CustomHeaderButton}>
+      <Item
+        title="Favorite"
+        iconName="ios-star"
+        onPress={() => {}}
+      />
+    </HeaderButtons>
+  }
+}

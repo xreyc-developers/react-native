@@ -1,0 +1,51 @@
+## DRAWER NAVIGATION
+
+--------------------------------------------------------------------------------
+## APPLICATION
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createDrawerNavigator,
+  createAppContainer } from 'react-navigation';
+import FavoriteScreen from './screens/FavoritesScreen';
+
+// HEADER NAVIGATOR
+const MealsNavigator = createStackNavigator({...});
+const FiltersNavigator = createStackNavigator({
+  Filters: FilterScreen
+})
+
+// TAB NAVIGATORS
+const MealsFavTabNavigator = createBottomTabNavigator({
+  Meals: MealsNavigator,
+  Favorites: FavoriteScreen
+});
+
+// DRAWER NAVIGATORS
+const MainNavigator = createDrawerNavigator({
+  MealsAndFavs: MealsFavTabNavigator,
+  Filters: FiltersNavigator
+})
+
+export default createAppContainer(MainNavigator);
+--------------------------------------------------------------------------------
+@ Screen File
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
+
+const CategoryScreen = () => {}
+
+CategoryScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: 'Meal Categories',
+    headerLeft: (<HeaderButton HeaderButtonComponent={HeaderButton}>
+      <Item
+        title="Menu"
+        iconName="ios-menu"
+        onPress={() => {
+          navData.navigation.toggleDrawer()
+        }}
+      />
+    </HeaderButton>)
+  }
+}
