@@ -1,0 +1,9 @@
+## ASYNC STORAGE
+
+## INSTALLATION
+expo install @react-native-async-storage/async-storage
+
+## APPLICATION
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+AsyncStorage.setItem('userData', 'HERE IS THE DATA')

@@ -1,0 +1,10 @@
+## STACK NAVIGATION IS KEEPED ON MEMORY
+- the screen is not re-rendered, so initial fetch from database won't be fetch.
+
+useEffect(() => {
+  const willFocusSub = props.navigation.addListener('willFocus', loadProducts); // query the data
+
+  return () => {
+    willFocusSub.remove();
+  }
+}, [loadProducts])

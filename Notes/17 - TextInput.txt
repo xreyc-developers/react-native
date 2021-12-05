@@ -1,0 +1,9 @@
+## TEXT INPUT
+<TextInput
+  value={}
+  onChangeText={}
+  keyboardType='default' // default, number-pad, decimal-pad, numeric, email-address, phone-pad
+  autoCapitalize='sentences' // characters, none, sentences, words
+  autoCorrect={false}
+  returnKeyType='next'
+/>

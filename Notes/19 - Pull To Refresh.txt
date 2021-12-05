@@ -1,0 +1,18 @@
+## PULL TO REQUEST
+
+const App = () => {
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const loadProducts = () => {
+    setIsRefreshing(true);
+    // SOME ASYNC SERVER REQUEST
+    setIsRefreshing(false);
+  }
+
+  return (
+    <FlatList
+      onRefresh={loadProducts} // TRIGGERED ON PULL
+      refreshing={isRefreshing} // NOTIFICATION WHEN REFRESH IS DONE
+    />
+  )
+}
