@@ -1,0 +1,5 @@
+## EXPO BARE
+- you can have a raw development without the heavy lifting
+
+## START
+expo init RNWithExpoBare

@@ -1,0 +1,3 @@
+## PUBLISH APP
+expo publish
+- you will be prompted to create an account
